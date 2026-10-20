@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>隐私权政策 · Junkdrawer 聚合邮箱</title>
+<style>
+  :root{--fg:#1f2328;--muted:#59636e;--line:#d8dee4;--accent:#0969da;--bg:#fff}
+  @media (prefers-color-scheme:dark){:root{--fg:#e6edf3;--muted:#9198a1;--line:#30363d;--accent:#4493f8;--bg:#0d1117}}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.75 -apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,"PingFang SC","Microsoft YaHei",sans-serif}
+  main{max-width:760px;margin:0 auto;padding:56px 24px 88px}
+  h1{font-size:28px;margin:0 0 6px}
+  .sub{color:var(--muted);margin:0 0 36px;font-size:14px}
+  h2{font-size:17px;margin:32px 0 8px;padding-top:18px;border-top:1px solid var(--line)}
+  ul{padding-left:22px}
+  code{background:rgba(127,127,127,.15);padding:1px 5px;border-radius:4px;font-size:14px}
+  a{color:var(--accent)}
+  .note{border-left:3px solid var(--line);padding:2px 0 2px 14px;color:var(--muted)}
+  footer{margin-top:44px;color:var(--muted);font-size:14px}
+</style>
+</head>
+<body>
+<main>
+  <h1>隐私权政策</h1>
+  <p class="sub">适用于「Junkdrawer 聚合邮箱」——一个自托管的多邮箱聚合工具。最后更新：2026-10-20。</p>
+
+  <h2>1. 适用范围</h2>
+  <p>
+    本工具是由个人部署在<strong>自有服务器</strong>上的内部工具，仅供部署者本人及其明确授权的账号使用，
+    不向公众提供服务，也没有注册功能。本政策说明本工具如何处理通过 IMAP / OAuth 获取的邮箱数据。
+  </p>
+
+  <h2>2. 收集哪些数据</h2>
+  <ul>
+    <li><strong>邮箱连接凭据</strong>：OAuth 的 refresh token，或 IMAP 授权码。以 AES-256-GCM 加密后存储在部署者自己的数据库中，密钥不与数据库放在一起。</li>
+    <li><strong>邮件头信息</strong>：发件人、收件人、抄送、主题、发送时间、大小、摘要片段、已读与星标状态。用于在列表里展示邮件。</li>
+    <li><strong>邮件正文</strong>：<strong>不持久化</strong>。仅在用户点开某一封邮件时实时从邮箱服务器拉取，展示后即丢弃。</li>
+  </ul>
+  <p class="note">不收集：通讯录、日历、云盘、位置、设备信息、浏览记录，以及任何与邮箱收发无关的数据。</p>
+
+  <h2>3. 数据存放在哪里</h2>
+  <p>
+    全部数据保存在部署者自己控制的服务器上（自建数据库）。
+    <strong>不经过、也不上传到任何第三方服务</strong>，本工具没有运营方服务器，不存在「数据回传」。
+  </p>
+
+  <h2>4. 数据如何被使用</h2>
+  <ul>
+    <li>展示统一收件箱、搜索、查看正文；</li>
+    <li>把用户主动发起的「标记已读 / 加星标 / 移动或删除」写回邮箱服务器；</li>
+    <li>统计未读数、上次同步时间等界面信息。</li>
+  </ul>
+  <p>除此之外不作任何用途：不做用户画像，不做广告投放，不做数据挖掘。</p>
+
+  <h2>5. 数据共享与转让</h2>
+  <p>
+    <strong>不出售、不出租、不共享、不转让</strong>任何邮箱数据给第三方。
+    唯一的外部通信对象是邮箱服务商本身（Google、Microsoft、QQ、网易、中国移动、中国电信），
+    且仅限于 IMAP 协议所需的读写操作。
+  </p>
+
+  <h2>6. Google API 服务用户数据政策</h2>
+  <p>
+    本工具对从 Google API 获取的信息的使用，遵循
+    <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API 服务用户数据政策</a>，
+    包括其中的<strong>有限使用（Limited Use）</strong>要求：
+  </p>
+  <ul>
+    <li>仅将 Gmail 数据用于提供本工具明确展示的邮件浏览与标记功能；</li>
+    <li>不将 Gmail 数据传输给第三方，除非为提供功能所必需或法律要求；</li>
+    <li>不将 Gmail 数据用于广告投放、出售，或用于训练通用人工智能 / 机器学习模型；</li>
+    <li>不允许多人读取同一份 Gmail 数据，除非部署者明确授权；</li>
+  </ul>
+
+  <h2>7. 保存期限与删除</h2>
+  <ul>
+    <li>邮件头索引：保留至用户在工具中删除该账号，或手动清理。</li>
+    <li>凭据：删除账号时一并删除；也可随时在 Google 账号的
+      <a href="https://myaccount.google.com/permissions">第三方应用授权页</a>撤销授权，撤销后本工具立即失去访问能力。</li>
+    <li>删除操作不可恢复，但<strong>不影响邮箱服务器上的原始邮件</strong>——本工具的删除只清除本地索引与状态记录。</li>
+  </ul>
+
+  <h2>8. 安全性</h2>
+  <ul>
+    <li>与邮箱服务器之间全程 TLS 加密（IMAP 993 隐式 TLS）；</li>
+    <li>凭据使用 AES-256-GCM 加密存储，密钥通过环境变量单独配置；</li>
+    <li>工具本身不对外开放注册，仅部署者本机 / 局域网访问。</li>
+  </ul>
+
+  <h2>9. 政策变更</h2>
+  <p>如本政策发生变更，将更新本页面顶部的「最后更新」日期。</p>
+
+  <h2>10. 联系方式</h2>
+  <p>与本工具的数据处理有关的任何问题，请通过
+    <a href="https://github.com/skorpiox89/mail-hub-site/issues">GitHub Issues</a> 联系。</p>
+
+  <footer>
+    <p><a href="./">← 返回首页</a></p>
+  </footer>
+</main>
+</body>
+</html>
